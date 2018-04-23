@@ -10,7 +10,7 @@ class Natto2classifierTest < Minitest::Test
 
   def test_natto_parse
     word = '今日の朝食は納豆だ'
-    check = ['今日','の','朝食','は','納豆','だ']
+    check = %w[今日 の 朝食 は 納豆 だ]
     assert_equal Natto2classifier::Natto.parse(word), check
   end
 
