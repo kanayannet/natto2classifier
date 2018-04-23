@@ -22,7 +22,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+classifier = Natto2classifier::Bayes.new '朝食', '夕食'
+classifier.train '朝食', '今日の朝食は納豆だ'
+classifier.train '夕食', '今日の夕食は湯豆腐だ'
+classifier.classify '納豆はいつも朝食べている' #=> '朝食'
+```
 
 ## Development
 
