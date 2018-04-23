@@ -1,0 +1,36 @@
+PATH
+  remote: .
+  specs:
+    natto2classifier (0.1.0)
+      classifier-reborn
+      natto
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    classifier-reborn (2.2.0)
+      fast-stemmer (~> 1.0)
+    coderay (1.1.2)
+    fast-stemmer (1.0.2)
+    ffi (1.9.23)
+    method_source (0.9.0)
+    minitest (5.11.3)
+    natto (1.1.1)
+      ffi (>= 1.9.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    rake (10.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  minitest (~> 5.0)
+  natto2classifier!
+  pry
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.1
