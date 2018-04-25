@@ -4,19 +4,13 @@ require 'classifier-reborn'
 
 module Natto2classifier
   # It is a library that classifies Japanese language.
-  class Bayes
-    def initialize(*category)
-      raise 'category is not exists' if category.nil?
-      raise 'category is not array' unless category.is_a?(Array)
-      @bayes = ClassifierReborn::Bayes.new(*category)
-    end
-
+  class Bayes < ClassifierReborn::Bayes
     def train(category, word)
-      @bayes.train category, Natto2classifier::Natto.parse(word).join(' ')
+      super category, Natto2classifier::Natto.parse(word).join(' ')
     end
 
     def classify(word)
-      @bayes.classify word
+      super Natto2classifier::Natto.parse(word).join(' ')
     end
   end
 end

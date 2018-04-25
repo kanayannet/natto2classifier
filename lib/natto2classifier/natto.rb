@@ -4,11 +4,11 @@ require 'natto'
 module Natto2classifier
   class Natto
     def self.parse(word)
-      raise 'input word is not exist.' unless word.is_a?(String)
-
-      nm = ::Natto::MeCab.new('-F%m')
+      nm = ::Natto::MeCab.new('-F%m\s%f[7]')
       results = []
-      nm.enum_parse(word).each{|n| results << n.feature if !n.is_eos? }
+      nm.enum_parse(word.to_s).each do |n|
+        results << n.feature if !n.is_eos?
+      end
       results
     end
   end
