@@ -20,11 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
+### Baysian methods
+
 ```
-classifier = Natto2classifier::Bayes.new '朝食', '夕食'
-classifier.train '朝食', '今日の朝食は納豆だ'
-classifier.train '夕食', '今日の夕食は湯豆腐だ'
-classifier.classify '納豆はいつも朝食べている' #=> '朝食'
+bayes = Natto2classifier::Bayes.new '朝食', '夕食'
+bayes.train '朝食', '今日の朝食は納豆だ'
+bayes.train '夕食', '今日の夕食は湯豆腐だ'
+bayes.classify '納豆はいつも朝食べている' #=> '朝食'
+```
+
+### LSI methods
+
+```
+lsi = Natto2classifier::LSI.new
+lsi.add_item '今日の朝食は納豆だ', '朝食'
+lsi.add_item '今日の夕食は湯豆腐だ', '夕食'
+lsi.classify '納豆はいつも朝食べている' #=> '朝食'
+lsi.find_related '納豆はいつも朝食べている' #=> ['今日 キョウ の ノ 朝食 チョウショク は ハ 納豆 ナットウ だ ダ', '今日 キョウ の ノ 夕食 ユウショク は ハ 湯豆腐 ユドウフ だ ダ']
 ```
 
 ## Development
