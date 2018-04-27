@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_runtime_dependency "natto"
   spec.add_runtime_dependency "classifier-reborn"
+  spec.add_runtime_dependency "rb-gsl"
 end
