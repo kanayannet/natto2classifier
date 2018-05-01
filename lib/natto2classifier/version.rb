@@ -1,3 +1,3 @@
 module Natto2classifier
-  VERSION = "0.2.0"
+  VERSION = "0.3.0"
 end
