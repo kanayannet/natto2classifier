@@ -39,6 +39,17 @@ lsi.classify '納豆はいつも朝食べている' #=> '朝食'
 lsi.find_related '納豆はいつも朝食べている' #=> ['今日 キョウ の ノ 朝食 チョウショク は ハ 納豆 ナットウ だ ダ', '今日 キョウ の ノ 夕食 ユウショク は ハ 湯豆腐 ユドウフ だ ダ']
 ```
 
+### validate methods
+
+```
+sample_data = CSV.read('./data/train.csv')
+bayes = Natto2classifier::Bayes.new '朝食', '夕食'
+cross_validate(bayes, sample_data) #=> report...
+
+test_data, training_data = sample_data.partition.with_index { |_, i| (i % 2).zero? }
+validate(bayes, training_data, test_data) #=> {"夕食"=>{"夕食"=>3, "朝食"=>0}, "朝食"=>{"夕食"=>...}}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

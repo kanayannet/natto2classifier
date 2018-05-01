@@ -4,6 +4,7 @@ require 'csv'
 require 'minitest/autorun'
 
 class Natto2classifierTest < Minitest::Test
+  include Natto2classifier::Validator
   def test_that_it_has_a_version_number
     refute_nil ::Natto2classifier::VERSION
   end
@@ -39,5 +40,14 @@ class Natto2classifierTest < Minitest::Test
                    '納豆 ナットウ は ハ 朝 アサ 食べる タベル と ト 健康 ケンコウ に ニ 良い ヨイ',
                    '鍋 ナベ 料理 リョウリ は ハ みんな ミンナ で デ 囲ん カコン で デ 食べる タベル']
     assert_equal lsi.find_related('鍋料理'), related_str
+  end
+
+  def test_validate
+    sample_data = CSV.read('./data/train.csv')
+    bayes = Natto2classifier::Bayes.new '朝食', '夕食'
+    cross_validate(bayes, sample_data)
+    test_data, training_data = sample_data.partition.with_index { |_, i| (i % 2).zero? }
+    conf_mat = validate(bayes, training_data, test_data)
+    assert_equal conf_mat.is_a?(Hash), true
   end
 end
