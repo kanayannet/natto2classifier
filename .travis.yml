@@ -13,7 +13,7 @@ install:
   - wget --no-check-certificate https://github.com/buruzaemon/natto/raw/master/etc/mecab-ipadic-2.7.0-20070801.tar.gz && tar zxf mecab-ipadic-2.7.0-20070801.tar.gz
   - pushd mecab-ipadic-2.7.0-20070801 && ./configure --with-charset=utf8 && make && sudo make install && popd
   - sudo ldconfig
-  # explicitly install ffi and minitest
+  # explicitly install
   - bundle install .bundle
 script:
   - bundle exec ruby test/natto2classifier_test.rb
