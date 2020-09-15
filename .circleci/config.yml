@@ -5,6 +5,7 @@ jobs:
       - image: kanayannet/natto2classifier:latest
     steps:
       - checkout
+      - run: echo 'run test'
       - run: bundle install
       - run: bundle exec ruby test/natto2classifier_test.rb
 workflows:
