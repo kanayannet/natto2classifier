@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    natto2classifier (0.3.2)
+    natto2classifier (0.3.3)
       classifier-reborn
       natto
       rb-gsl
@@ -37,4 +37,4 @@ DEPENDENCIES
   rake (~> 10.0)
 
 BUNDLED WITH
-   1.16.1
+   1.17.2
