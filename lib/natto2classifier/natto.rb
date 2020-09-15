@@ -4,10 +4,13 @@ require 'natto'
 module Natto2classifier
   class Natto
     def self.parse(word)
-      nm = ::Natto::MeCab.new('-F%m\s%f[7]')
+      nm = ::Natto::MeCab.new
       results = []
-      nm.enum_parse(word.to_s).each do |n|
-        results << n.feature if !n.is_eos?
+      nm.parse(word.to_s) do |n|
+        break if n.is_eos?
+        kana = n.feature.split(',')[7]
+        results << n.surface
+        results << kana if !kana.nil? && kana != '*'
       end
       results
     end

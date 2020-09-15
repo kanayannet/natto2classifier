@@ -1,5 +1,7 @@
 # Natto2classifier
 
+[![Build Status](https://travis-ci.org/kanayannet/natto2classifier.svg?branch=master)](https://travis-ci.org/kanayannet/natto2classifier)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/natto2classifier`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
@@ -39,6 +41,17 @@ lsi.classify '納豆はいつも朝食べている' #=> '朝食'
 lsi.find_related '納豆はいつも朝食べている' #=> ['今日 キョウ の ノ 朝食 チョウショク は ハ 納豆 ナットウ だ ダ', '今日 キョウ の ノ 夕食 ユウショク は ハ 湯豆腐 ユドウフ だ ダ']
 ```
 
+### validate methods
+
+```
+sample_data = CSV.read('./data/train.csv')
+bayes = Natto2classifier::Bayes.new '朝食', '夕食'
+cross_validate(bayes, sample_data) #=> report...
+
+test_data, training_data = sample_data.partition.with_index { |_, i| (i % 2).zero? }
+validate(bayes, training_data, test_data) #=> {"夕食"=>{"夕食"=>3, "朝食"=>0}, "朝食"=>{"夕食"=>...}}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -47,7 +60,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/natto2classifier. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kanayannet/natto2classifier. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -55,4 +68,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Natto2classifier project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/natto2classifier/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Natto2classifier project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kanayannet/natto2classifier/blob/master/CODE_OF_CONDUCT.md).
