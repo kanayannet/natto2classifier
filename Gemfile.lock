@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    natto2classifier (0.3.4)
+    natto2classifier (0.3.5)
       classifier-reborn
       natto
       rb-gsl
@@ -17,7 +17,7 @@ GEM
     gsl (2.1.0.3)
     method_source (0.9.0)
     minitest (5.11.3)
-    natto (1.1.1)
+    natto (1.2.0)
       ffi (>= 1.9.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
