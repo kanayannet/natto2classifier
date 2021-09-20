@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: ruby:2.6.3-alpine
+      - image: cimg/ruby:2.6-node
     steps:
       - checkout
       - run: echo 'run test'
