@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: cimg/ruby:2.6-node
+      - image: cimg/ruby:2.7-node
     steps:
       - checkout
       - run: echo 'run test'
