@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    natto2classifier (0.3.5)
+    natto2classifier (0.3.6)
       classifier-reborn
       natto
       rb-gsl
