@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: kanayannet/natto2classifier:latest
+      - image: ruby:2.6.3-alpine
     steps:
       - checkout
       - run: echo 'run test'
